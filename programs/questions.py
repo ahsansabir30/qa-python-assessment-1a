@@ -33,9 +33,19 @@
 
 # What was the name of the function we have seen to check the length of a container?  Use your CLI to access the Python documentation and get help(len).
 
-
 def one(input1, input2):
-    return ""
+    length_input1 = len(input1)
+
+    length_input2 = len(input2)
+
+    if length_input1 > length_input2:
+        return input1
+    elif length_input2 > length_input1:
+        return input2
+    elif length_input1 == length_input2:
+        return input1 + ' ' + input2
+
+
 
    # <QUESTION 2>
 
@@ -58,11 +68,19 @@ def one(input1, input2):
     # What was the name of the function we have seen to seperate a String? How can we make a string all upper or lower case?
 
     # Use your CLI to access the Python documentation and get help manipulating strings - help(str).
+import re
 
+from numpy import character
 
 def two(input):
-    return ""
+    lower = input.lower()
+    occurence = lower.count('bert')
 
+    if occurence < 2:
+        return ''
+    else:
+        result = re.search('bert(.*)bert', lower)
+        return result.group(1)
 
     # <QUESTION 3>
 
@@ -85,7 +103,14 @@ def two(input):
 
 
 def three(arg1):
-    return ""
+    if (arg1 % 3) == 0 and (arg1 % 5) ==0:
+        return "fizzbuzz"  
+    elif (arg1 % 3) == 0:
+        return "fizz"
+    elif (arg1 % 5) == 0:
+        return "buzz"
+    else:
+        return "null"
 
     # <QUESTION 4>
 
@@ -111,7 +136,17 @@ def three(arg1):
 
 
 def four(arg1):
-    return ""
+    list = arg1.split()
+    addition_list = []
+    for number in list:
+       new_list = [int(x) for x in number]
+       sum_of_number = sum(new_list)
+       addition_list.append(sum_of_number)
+    
+    max_number = max(addition_list)
+    
+    return max_number
+
 
     # <QUESTION 5>
 
@@ -138,9 +173,29 @@ def four(arg1):
 
     # help(str) and help(list), you might also need to use a function that can create a list of numbers for you, try help(range).
 
-
+import math
+#######
 def five(input):
-    return ""
+    # turning string into a list 
+    input_list = input.split(',')
+    
+    index_list = len(input_list)
+    x = (index_list/4) -1
+    
+    new_list = []
+    counter = 0
+    y = 2
+    while counter <= x:
+        value = input_list[y] 
+        if value == "False":
+            new_value = y - 2
+            name = input_list[new_value]
+            new_list.append(input_list[int(new_value)])
+        y += 4
+        counter += 1
+    new_list = list(dict.fromkeys(new_list))
+    return new_list
+
 
     # <QUESTION 6>
 
@@ -161,8 +216,41 @@ def five(input):
 
 
 def six(input):
-    return ""
+    input = input.lower()
 
+    ei = input.count('ei')
+    ie = input.count('ie')
+
+
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    if ei > 0:
+        position_ei = input.find('ei')
+        position_before = input[position_ei-1]
+        
+        in_alphabet_position = alphabet.index(position_before)
+        if in_alphabet_position < 3:
+            return True
+        else:
+            return False
+    elif ie > 0:
+        # finding if an e has occured before ie
+        position = input.find('e')
+        position_ie = input.find('ie')
+        if position < position_ie:
+            return True
+        else:
+            return False
+    else:
+        return False
+        """     
+    if 'ei' in input:
+        return True
+    elif 'ie' in input:
+        return False
+    else:
+        return False
+    """
+print(six('height'))
     # <QUESTION 7>
 
     # Write a function which returns the integer number of vowels in a given string.
@@ -179,7 +267,15 @@ def six(input):
 
 
 def seven(input):
-    return ""
+    input = input.lower()
+    vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+
+    count_list = []
+    for vowel in vowels:
+        counter = input.count(vowel)
+        count_list.append(counter)
+
+    return sum(count_list)
 
     # <QUESTION 8>
 
@@ -198,7 +294,14 @@ def seven(input):
 
 
 def eight(input):
-    return ""
+    y = input + 1
+    list = []
+
+    solution = 1
+    for x in range(1, y):
+        solution = solution * x
+    
+    return solution
 
     # <QUESTION 9>
 
@@ -220,7 +323,14 @@ def eight(input):
 
 
 def nine(inputString, char):
-    return ""
+    # check if char in string
+    inputString = inputString.replace(" ", "")
+    if char not in inputString:
+        return -1
+    else:
+        index = inputString.index(char)
+        return (index + 1)
+    
 
     # <QUESTION 10>
 
@@ -241,4 +351,22 @@ def nine(inputString, char):
 
 
 def ten(string, int, char):
-    return ""
+    string = string.lower()
+    string = string.replace(" ", "")
+    
+    # checking if the int is greater than the length of the string
+    if len(string) < int:
+        return False
+    else:
+        # gives the index of char
+        index_char = string.find(char) 
+        character = string[index_char]
+        # give the char at the index int
+        value = string[(int-1)]
+       
+        if value == character:
+            return True
+        return False
+  
+
+    
