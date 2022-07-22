@@ -217,10 +217,8 @@ def five(input):
 
 def six(input):
     input = input.lower()
-
     ei = input.count('ei')
     ie = input.count('ie')
-
 
     alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     if ei > 0:
@@ -242,15 +240,7 @@ def six(input):
             return False
     else:
         return False
-        """     
-    if 'ei' in input:
-        return True
-    elif 'ie' in input:
-        return False
-    else:
-        return False
-    """
-print(six('height'))
+
     # <QUESTION 7>
 
     # Write a function which returns the integer number of vowels in a given string.
